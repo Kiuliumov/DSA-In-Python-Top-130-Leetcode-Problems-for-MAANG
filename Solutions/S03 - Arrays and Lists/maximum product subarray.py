@@ -1,15 +1,10 @@
-class Solution(object):
-    def productExceptSelf(self, nums):
-        answer = [1] * len(nums)
+class Solution:
+    def maxProductSubArray(self, nums: list[int]) -> int:
+        s = nums[0]
+        m = nums[0]
 
-        prefix = 1
-        for i in range(len(nums)):
-            answer[i] = prefix
-            prefix *= nums[i]
+        for i in range(1, len(nums)):
+            s = max(nums[i], s * nums[i])
+            m = max(m, s)
 
-        suffix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            answer[i] *= suffix
-            suffix *= nums[i]
-
-        return answer
+        return m
