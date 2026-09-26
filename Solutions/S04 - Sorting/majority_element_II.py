@@ -7,6 +7,8 @@ class Solution:
                 count_map[n] = 0
             count_map[n] += 1
         
+        appear_more = []
         for n, v in count_map.items():
-            if v > len(nums) / 2:
-                return n
+            if v > len(nums) / 3:
+                appear_more.append(n)
+        return appear_more
